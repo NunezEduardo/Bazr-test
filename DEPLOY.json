@@ -1,0 +1,19 @@
+{
+  "bazr": "1.0",
+  "note": "Configuración para produccion en servidor",
+  "server": {
+    "tested_with": ["Apache 2.4+", "Nginx 1.18+", "PHP 7.4+"],
+    "min_php_version": "7.4"
+  },
+  "steps": [
+    "1. Subir todos los archivos al servidor (carpeta pública, ej: public_html o www)",
+    "2. La carpeta data/ debe tener permisos de escritura: chmod 755 data/ (o 775 si el servidor necesita)",
+    "3. Editar api/save.php: cambiar CAMBIA_ESTA_CLAVE_SECRETA por una clave real y segura",
+    "4. En admin.js: encontrar USE_SERVER_SAVE = false y cambiarlo a true",
+    "5. En admin.js: encontrar SERVER_SAVE_ENDPOINT y asegurarse que apunta a 'api/save.php'",
+    "6. En admin.js: encontrar la constante ADMIN_KEY_HEADER y poner la misma clave del paso 3",
+    "7. Si usas Nginx sin PHP, desactiva USE_SERVER_SAVE y usa solo el flujo de descarga/importar JSON"
+  ],
+  "nginx_config_example": "location /api/ { try_files $uri $uri/ =404; fastcgi_pass unix:/run/php/php7.4-fpm.sock; }",
+  "apache_config_example": "Ya funciona con .htaccess por defecto si mod_rewrite está habilitado"
+}

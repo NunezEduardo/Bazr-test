@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BAZR — Panel de Administración</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700;800&family=Josefin+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="sidebar-logo">
+        <img src="images/bazr-logos/Bazr_logo.svg" alt="BAZR" class="admin-logo-img">
+      </a>
+      <span class="sidebar-badge">Admin</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link active" data-section="products-section">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 01-8 0" />
+        </svg>
+        Productos
+      </a>
+      <a href="#" class="sidebar-link" data-section="add-section">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="8" x2="12" y2="16" />
+          <line x1="8" y1="12" x2="16" y2="12" />
+        </svg>
+        Agregar Producto
+      </a>
+      <a href="#" class="sidebar-link" data-section="customize-section">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3" />
+          <path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14" />
+          <path d="M15.54 8.46a5 5 0 010 7.07M8.46 8.46a5 5 0 000 7.07" />
+        </svg>
+        Personalizar Tienda
+      </a>
+      <a href="#" class="sidebar-link" data-section="catalogs-section">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
+        </svg>
+        Catálogos
+      </a>
+      <a href="#" class="sidebar-link" data-section="export-section">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        Exportar JSON
+      </a>
+      <a href="#" class="sidebar-link" data-section="orders-section">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+        Órdenes
+        <span class="sidebar-badge-count" id="orders-badge">0</span>
+      </a>
+      <a href="#" class="sidebar-link" data-section="payments-section">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+          <line x1="1" y1="10" x2="23" y2="10"/>
+        </svg>
+        Métodos de Pago
+      </a>
+      <a href="#" class="sidebar-link" data-section="invoice-settings-section">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 14l6-6"/><circle cx="9.5" cy="9.5" r="1.5"/><circle cx="14.5" cy="14.5" r="1.5"/>
+          <path d="M12 2H2v20l4-4 4 4 4-4 4 4V2h-2"/>
+        </svg>
+        Config. de Nota
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="index.html" class="sidebar-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="19" y1="12" x2="5" y2="12" />
+          <polyline points="12 19 5 12 12 5" />
+        </svg>
+        Volver a la Tienda
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Menú">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+      <h1 class="topbar-title" id="topbar-title">Gestión de Productos</h1>
+      <div class="topbar-stats">
+        <div class="topbar-stat">
+          <span class="topbar-stat-number" id="total-products">0</span>
+          <span class="topbar-stat-label">Productos</span>
+        </div>
+        <div class="topbar-stat">
+          <span class="topbar-stat-number" id="total-collections">0</span>
+          <span class="topbar-stat-label">Colecciones</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- PRODUCTS LIST SECTION -->
+    <section id="products-section" class="content-section active">
+      <div class="section-toolbar">
+        <div class="toolbar-search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <path d="M21 21l-4.35-4.35" />
+          </svg>
+          <input type="text" id="admin-search" placeholder="Buscar productos..." aria-label="Buscar productos">
+        </div>
+        <button class="btn-action" id="btn-add-new">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
+          Nuevo Producto
+        </button>
+      </div>
+      <div class="products-table-wrapper">
+        <table class="products-table" id="products-table">
+          <thead>
+            <tr>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Colección</th>
+              <th>Precio</th>
+              <th>Colores</th>
+              <th>Tallas</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="products-tbody"></tbody>
+        </table>
+      </div>
+      <div id="admin-no-products" class="admin-empty hidden">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+        </svg>
+        <p>No hay productos aún</p>
+        <span>Agrega tu primer producto desde el formulario</span>
+      </div>
+    </section>
+
+    <!-- ADD/EDIT PRODUCT SECTION -->
+    <section id="add-section" class="content-section">
+      <div class="form-card">
+        <h2 class="form-title" id="form-title">Agregar Nuevo Producto</h2>
+        <form id="product-form" autocomplete="off">
+          <input type="hidden" id="edit-id" value="">
+
+          <!-- Basic Info -->
+          <div class="form-group">
+            <label for="prod-name">Nombre del Producto *</label>
+            <input type="text" id="prod-name" required placeholder="Ej: Blazer Oversize Elegance">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prod-collection">Colección *</label>
+              <input type="text" id="prod-collection" required placeholder="Ej: Otoño Urbano" list="collections-list">
+              <datalist id="collections-list"></datalist>
+            </div>
+            <div class="form-group">
+              <label for="prod-price">Precio ($) *</label>
+              <input type="number" id="prod-price" required min="0" step="0.01" placeholder="89.99">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prod-description">Descripción</label>
+            <textarea id="prod-description" rows="3" placeholder="Descripción detallada del producto..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="prod-material">Material</label>
+            <input type="text" id="prod-material" placeholder="Ej: 100% Algodón Orgánico">
+          </div>
+
+          <!-- Image Upload -->
+          <div class="form-group">
+            <label>Imagen del Producto</label>
+            <div class="image-upload-area" id="image-upload-area">
+              <input type="file" id="prod-image" accept="image/*" hidden>
+              <div class="upload-placeholder" id="upload-placeholder">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="2" y="2" width="20" height="20" rx="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <path d="M21 15l-5-5L5 21" />
+                </svg>
+                <p>Arrastra una imagen o haz clic para seleccionar</p>
+                <span>PNG, JPG, WEBP (máx. 5MB)</span>
+              </div>
+              <div class="upload-preview hidden" id="upload-preview">
+                <img id="preview-img" src="" alt="Preview">
+                <button type="button" class="preview-remove" id="preview-remove" aria-label="Eliminar imagen">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Colors -->
+          <div class="form-group">
+            <label>Colores</label>
+            <div class="dynamic-list" id="colors-list"></div>
+            <div class="add-item-row">
+              <input type="text" id="new-color-name" placeholder="Nombre del color">
+              <input type="color" id="new-color-hex" value="#c9a96e">
+              <button type="button" class="btn-small" id="add-color-btn">Agregar</button>
+            </div>
+          </div>
+
+          <!-- Sizes -->
+          <div class="form-group">
+            <label>Tallas</label>
+            <div class="dynamic-list" id="sizes-list"></div>
+            <div class="add-item-row">
+              <input type="text" id="new-size" placeholder="Ej: M, L, XL, 32...">
+              <button type="button" class="btn-small" id="add-size-btn">Agregar</button>
+            </div>
+          </div>
+
+          <!-- Models -->
+          <div class="form-group">
+            <label>Modelos</label>
+            <div class="dynamic-list" id="models-list"></div>
+            <div class="add-item-row">
+              <input type="text" id="new-model" placeholder="Ej: Slim Fit, Regular...">
+              <button type="button" class="btn-small" id="add-model-btn">Agregar</button>
+            </div>
+          </div>
+
+          <!-- Featured -->
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="prod-featured">
+              <span class="checkmark"></span>
+              Marcar como producto destacado
+            </label>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-actions">
+            <button type="submit" class="btn-primary-admin" id="form-submit-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Guardar Producto
+            </button>
+            <button type="button" class="btn-secondary-admin" id="form-cancel-btn">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- CUSTOMIZE SECTION -->
+    <section id="customize-section" class="content-section">
+      <div class="customize-layout">
+
+        <!-- 1. IDENTIDAD -->
+        <div class="customize-block">
+          <div class="customize-block-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg>
+            <h3>Identidad de la Tienda</h3>
+          </div>
+          <div class="customize-block-body">
+            <div class="cust-group">
+              <label for="cust-store-name">Nombre de la Tienda</label>
+              <input type="text" id="cust-store-name" placeholder="Ej: BAZR" maxlength="40">
+            </div>
+            <div class="cust-group">
+              <label for="cust-catalog-label">Nombre de la Sección de Productos</label>
+              <select id="cust-catalog-label"
+                style="width:100%;padding:10px 12px;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:0.875rem;font-family:inherit;outline:none;">
+                <option value="Categoría">Categoría</option>
+                <option value="Catálogo">Catálogo</option>
+                <option value="Apartado">Apartado</option>
+                <option value="Colección">Colección</option>
+                <option value="Departamento">Departamento</option>
+                <option value="Sección">Sección</option>
+                <option value="Tienda">Tienda</option>
+              </select>
+            </div>
+            <div class="cust-group">
+              <label>Logo Principal (SVG / PNG)</label>
+              <div class="logo-upload-area" id="logo-main-area">
+                <input type="file" id="cust-logo-main" accept="image/*,.svg" hidden>
+                <div class="logo-upload-preview" id="logo-main-preview">
+                  <img src="images/bazr-logos/Bazr_logo.svg" id="logo-main-img" alt="Logo Principal"
+                    class="logo-preview-img">
+                </div>
+                <button type="button" class="btn-upload-logo" id="btn-upload-logo-main">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                  </svg>
+                  Cambiar Logo
+                </button>
+              </div>
+            </div>
+            <div class="cust-group">
+              <label>Icono Logo (SVG / PNG)</label>
+              <div class="logo-upload-area" id="logo-icon-area">
+                <input type="file" id="cust-logo-icon" accept="image/*,.svg" hidden>
+                <div class="logo-upload-preview" id="logo-icon-preview">
+                  <img src="images/bazr-logos/Bazr_iconlogo.svg" id="logo-icon-img" alt="Icono Logo"
+                    class="logo-preview-img logo-preview-img--icon">
+                </div>
+                <button type="button" class="btn-upload-logo" id="btn-upload-logo-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                  </svg>
+                  Cambiar Icono
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. FUENTES -->
+        <div class="customize-block">
+          <div class="customize-block-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="4 7 4 4 20 4 20 7" />
+              <line x1="9" y1="20" x2="15" y2="20" />
+              <line x1="12" y1="4" x2="12" y2="20" />
+            </svg>
+            <h3>Fuente de Texto</h3>
+          </div>
+          <div class="customize-block-body">
+            <div class="font-grid" id="font-grid">
+              <!-- Generated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. TEMAS -->
+        <div class="customize-block">
+          <div class="customize-block-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2a10 10 0 010 20V2z" />
+            </svg>
+            <h3>Tema Visual</h3>
+          </div>
+          <div class="customize-block-body">
+            <div class="theme-grid" id="theme-grid">
+              <!-- Generated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. PALETA DE COLORES -->
+        <div class="customize-block">
+          <div class="customize-block-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="13.5" cy="6.5" r="3.5" />
+              <circle cx="17.5" cy="13.5" r="3.5" />
+              <circle cx="8.5" cy="13.5" r="3.5" />
+            </svg>
+            <h3>Paleta de Colores</h3>
+          </div>
+          <div class="customize-block-body">
+            <div class="palette-grid" id="palette-grid">
+              <!-- Generated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. TEXTOS DE CONTENIDO -->
+        <div class="customize-block customize-block--wide">
+          <div class="customize-block-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="17" y1="10" x2="3" y2="10" />
+              <line x1="21" y1="6" x2="3" y2="6" />
+              <line x1="21" y1="14" x2="3" y2="14" />
+              <line x1="17" y1="18" x2="3" y2="18" />
+            </svg>
+            <h3>Textos de Contenido</h3>
+            <span class="cust-hint">El footer y la pantalla de carga no son editables</span>
+          </div>
+          <div class="customize-block-body">
+            <div class="texts-accordion" id="texts-accordion">
+
+              <!-- HERO -->
+              <div class="texts-group">
+                <button type="button" class="texts-group-toggle">
+                  <span>Hero — Inicio</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </button>
+                <div class="texts-group-body">
+                  <div class="cust-group">
+                    <label for="txt-hero-tag">Etiqueta</label>
+                    <input type="text" id="txt-hero-tag" placeholder="Tu Tienda Online">
+                  </div>
+                  <div class="cust-group">
+                    <label for="txt-hero-title1">Título línea 1</label>
+                    <input type="text" id="txt-hero-title1" placeholder="Tu Negocio">
+                  </div>
+                  <div class="cust-group">
+                    <label for="txt-hero-title2">Título línea 2 (acento)</label>
+                    <input type="text" id="txt-hero-title2" placeholder="Tus Reglas">
+                  </div>
+                  <div class="cust-group">
+                    <label for="txt-hero-subtitle">Subtítulo</label>
+                    <textarea id="txt-hero-subtitle" rows="2" placeholder="Plataforma de Ecommerce..."></textarea>
+                  </div>
+                  <div class="cust-row">
+                    <div class="cust-group">
+                      <label for="txt-hero-cta1">Botón principal</label>
+                      <input type="text" id="txt-hero-cta1" placeholder="Explorar Catálogo">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-hero-cta2">Botón secundario</label>
+                      <input type="text" id="txt-hero-cta2" placeholder="Ver Colecciones">
+                    </div>
+                  </div>
+                  <div class="cust-row">
+                    <div class="cust-group">
+                      <label for="txt-stat1-label">Stat 1 — Etiqueta</label>
+                      <input type="text" id="txt-stat1-label" placeholder="Productos">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-stat2-label">Stat 2 — Etiqueta</label>
+                      <input type="text" id="txt-stat2-label" placeholder="Colecciones">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-stat3-label">Stat 3 — Etiqueta</label>
+                      <input type="text" id="txt-stat3-label" placeholder="Clientes">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- COLLECTIONS -->
+              <div class="texts-group">
+                <button type="button" class="texts-group-toggle">
+                  <span>Sección — Colecciones</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </button>
+                <div class="texts-group-body">
+                  <div class="cust-group">
+                    <label for="txt-col-tag">Etiqueta</label>
+                    <input type="text" id="txt-col-tag" placeholder="Explora">
+                  </div>
+                  <div class="cust-group">
+                    <label for="txt-col-title">Título</label>
+                    <input type="text" id="txt-col-title" placeholder="Nuestras Colecciones">
+                  </div>
+                  <div class="cust-group">
+                    <label for="txt-col-desc">Descripción</label>
+                    <textarea id="txt-col-desc" rows="2" placeholder="Cada colección..."></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CATALOG -->
+              <div class="texts-group">
+                <button type="button" class="texts-group-toggle">
+                  <span>Sección — Catálogo</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </button>
+                <div class="texts-group-body">
+                  <div class="cust-row">
+                    <div class="cust-group">
+                      <label for="txt-cat-tag">Etiqueta</label>
+                      <input type="text" id="txt-cat-tag" placeholder="Tienda">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-cat-title">Título</label>
+                      <input type="text" id="txt-cat-title" placeholder="Catálogo Completo">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ABOUT -->
+              <div class="texts-group">
+                <button type="button" class="texts-group-toggle">
+                  <span>Sección — Nosotros</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </button>
+                <div class="texts-group-body">
+                  <div class="cust-group">
+                    <label for="txt-about-tag">Etiqueta</label>
+                    <input type="text" id="txt-about-tag" placeholder="Sobre Nosotros">
+                  </div>
+                  <div class="cust-group">
+                    <label for="txt-about-title">Título</label>
+                    <input type="text" id="txt-about-title" placeholder="Tu comercio. Tus reglas.">
+                  </div>
+                  <div class="cust-group">
+                    <label for="txt-about-p1">Párrafo 1</label>
+                    <textarea id="txt-about-p1" rows="2" placeholder="En BAZR creemos..."></textarea>
+                  </div>
+                  <div class="cust-group">
+                    <label for="txt-about-p2">Párrafo 2</label>
+                    <textarea id="txt-about-p2" rows="2" placeholder="Nuestra misión..."></textarea>
+                  </div>
+                  <div class="cust-row">
+                    <div class="cust-group">
+                      <label for="txt-feat1-title">Feature 1 — Título</label>
+                      <input type="text" id="txt-feat1-title" placeholder="Calidad Premium">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-feat1-desc">Feature 1 — Desc.</label>
+                      <input type="text" id="txt-feat1-desc" placeholder="Tiendas de calidad...">
+                    </div>
+                  </div>
+                  <div class="cust-row">
+                    <div class="cust-group">
+                      <label for="txt-feat2-title">Feature 2 — Título</label>
+                      <input type="text" id="txt-feat2-title" placeholder="Alcance Global">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-feat2-desc">Feature 2 — Desc.</label>
+                      <input type="text" id="txt-feat2-desc" placeholder="Llevamos tu tienda...">
+                    </div>
+                  </div>
+                  <div class="cust-row">
+                    <div class="cust-group">
+                      <label for="txt-feat3-title">Feature 3 — Título</label>
+                      <input type="text" id="txt-feat3-title" placeholder="Automatización">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-feat3-desc">Feature 3 — Desc.</label>
+                      <input type="text" id="txt-feat3-desc" placeholder="Automatiza tu tienda...">
+                    </div>
+                  </div>
+                  <div class="cust-group">
+                    <label for="txt-about-card">Texto tarjeta</label>
+                    <input type="text" id="txt-about-card" placeholder="Tu tienda en línea">
+                  </div>
+                </div>
+              </div>
+
+              <!-- CONTACT -->
+              <div class="texts-group">
+                <button type="button" class="texts-group-toggle">
+                  <span>Sección — Contacto</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </button>
+                <div class="texts-group-body">
+                  <div class="cust-group">
+                    <label for="txt-contact-tag">Etiqueta</label>
+                    <input type="text" id="txt-contact-tag" placeholder="Contáctanos">
+                  </div>
+                  <div class="cust-row">
+                    <div class="cust-group">
+                      <label for="txt-contact-title">Título</label>
+                      <input type="text" id="txt-contact-title" placeholder="Estamos aquí para ti">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-contact-desc">Descripción</label>
+                      <input type="text" id="txt-contact-desc" placeholder="Comunícate con nosotros...">
+                    </div>
+                  </div>
+                  <div class="cust-row">
+                    <div class="cust-group">
+                      <label for="txt-wa-title">WhatsApp — Título</label>
+                      <input type="text" id="txt-wa-title" placeholder="WhatsApp">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-wa-info">WhatsApp — Número</label>
+                      <input type="text" id="txt-wa-info" placeholder="+1 (234) 567-890">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-wa-link">WhatsApp — Enlace</label>
+                      <input type="text" id="txt-wa-link" placeholder="https://wa.me/1234567890">
+                    </div>
+                  </div>
+                  <div class="cust-row">
+                    <div class="cust-group">
+                      <label for="txt-ig-title">Instagram — Título</label>
+                      <input type="text" id="txt-ig-title" placeholder="Instagram">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-ig-info">Instagram — Usuario</label>
+                      <input type="text" id="txt-ig-info" placeholder="@bazr.tienda">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-ig-link">Instagram — Enlace</label>
+                      <input type="text" id="txt-ig-link" placeholder="https://instagram.com/bazr">
+                    </div>
+                  </div>
+                  <div class="cust-row">
+                    <div class="cust-group">
+                      <label for="txt-email-title">Email — Título</label>
+                      <input type="text" id="txt-email-title" placeholder="Email">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-email-info">Email — Dirección</label>
+                      <input type="text" id="txt-email-info" placeholder="info@bazr.tienda">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-email-link">Email — Enlace (mailto:)</label>
+                      <input type="text" id="txt-email-link" placeholder="mailto:info@bazr.tienda">
+                    </div>
+                  </div>
+                  <div class="cust-row">
+                    <div class="cust-group">
+                      <label for="txt-tt-title">TikTok — Título</label>
+                      <input type="text" id="txt-tt-title" placeholder="TikTok">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-tt-info">TikTok — Usuario</label>
+                      <input type="text" id="txt-tt-info" placeholder="@bazr.tienda">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-tt-link">TikTok — Enlace</label>
+                      <input type="text" id="txt-tt-link" placeholder="https://tiktok.com/@bazr">
+                    </div>
+                  </div>
+                  <div class="cust-row">
+                    <div class="cust-group">
+                      <label for="txt-fb-title">Facebook — Título</label>
+                      <input type="text" id="txt-fb-title" placeholder="Facebook">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-fb-info">Facebook — Nombre Pág.</label>
+                      <input type="text" id="txt-fb-info" placeholder="Bazr Tienda">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-fb-link">Facebook — Enlace</label>
+                      <input type="text" id="txt-fb-link" placeholder="https://facebook.com/bazr">
+                    </div>
+                  </div>
+                  <div class="cust-row">
+                    <div class="cust-group">
+                      <label for="txt-hours-title">Horario — Título</label>
+                      <input type="text" id="txt-hours-title" placeholder="Atención">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-hours-info">Horario — Horario</label>
+                      <input type="text" id="txt-hours-info" placeholder="Lun – Vie: 9am – 6pm">
+                    </div>
+                    <div class="cust-group">
+                      <label for="txt-hours-sub">Horario — Sub-texto</label>
+                      <input type="text" id="txt-hours-sub" placeholder="Respondemos en menos de 24h">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- end accordion -->
+          </div>
+        </div>
+
+      </div><!-- end customize-layout -->
+
+      <!-- Save Button (sticky) -->
+      <div class="customize-save-bar">
+        <p class="customize-save-info">Guardar descarga <strong>settings.json</strong> — importa ese archivo en otra instancia para replicar el diseño</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+          <button type="button" class="btn-primary-admin" id="customize-save-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" />
+              <polyline points="17 21 17 13 7 13 7 21" />
+              <polyline points="7 3 7 8 15 8" />
+            </svg>
+            Guardar y Exportar JSON
+          </button>
+          <label for="import-settings-file" class="btn-secondary-admin" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Importar settings.json
+          </label>
+          <input type="file" id="import-settings-file" accept=".json" hidden>
+          <button type="button" class="btn-secondary-admin" id="customize-reset-btn">Restablecer Todo</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPORT SECTION -->
+    <section id="export-section" class="content-section">
+      <div class="form-card">
+        <h2 class="form-title">Exportar / Importar Datos</h2>
+        <p class="form-desc">Cada tipo de dato tiene su propio archivo JSON. Descarga, edita y vuelve a importar cualquiera de ellos para actualizar tu tienda.</p>
+
+        <!-- Products -->
+        <div class="export-block">
+          <div class="export-block-header">
+            <div>
+              <h3>📦 Productos</h3>
+              <span class="export-block-hint">products.json — todos los productos de la tienda</span>
+            </div>
+            <div class="export-block-actions">
+              <button class="btn-primary-admin" id="export-btn">⬇ Descargar products.json</button>
+              <label for="import-file" class="btn-secondary-admin" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;">⬆ Importar products.json</label>
+              <input type="file" id="import-file" accept=".json" hidden>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="export-block">
+          <div class="export-block-header">
+            <div>
+              <h3>🗂 Categorías</h3>
+              <span class="export-block-hint">categories.json — catálogos / colecciones</span>
+            </div>
+            <div class="export-block-actions">
+              <button class="btn-primary-admin" id="export-categories-btn">⬇ Descargar categories.json</button>
+              <label for="import-categories-file" class="btn-secondary-admin" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;">⬆ Importar categories.json</label>
+              <input type="file" id="import-categories-file" accept=".json" hidden>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders -->
+        <div class="export-block">
+          <div class="export-block-header">
+            <div>
+              <h3>🧾 Pedidos</h3>
+              <span class="export-block-hint">orders.json — historial de todas las órdenes</span>
+            </div>
+            <div class="export-block-actions">
+              <button class="btn-primary-admin" id="export-orders-btn">⬇ Descargar orders.json</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="export-block">
+          <div class="export-block-header">
+            <div>
+              <h3>💳 Métodos de Pago</h3>
+              <span class="export-block-hint">payment_methods.json — métodos habilitados e instrucciones</span>
+            </div>
+            <div class="export-block-actions">
+              <button class="btn-primary-admin" id="export-payments-btn">⬇ Descargar payment_methods.json</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings -->
+        <div class="export-block">
+          <div class="export-block-header">
+            <div>
+              <h3>⚙️ Configuración</h3>
+              <span class="export-block-hint">settings.json — tema, fuente, textos, logos y más. Importa otro JSON con el mismo formato para cambiar el diseño.</span>
+            </div>
+            <div class="export-block-actions">
+              <button class="btn-primary-admin" id="export-settings-btn">⬇ Descargar settings.json</button>
+              <button class="btn-secondary-admin" id="import-settings-btn">⬆ Importar settings.json</button>
+              <input type="file" id="import-settings-file-export" accept=".json" hidden>
+            </div>
+          </div>
+        </div>
+
+        <div class="json-preview-wrapper" style="margin-top:24px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+            <h3 style="margin:0">Vista previa — products.json</h3>
+            <button class="btn-small" id="refresh-json-preview">Actualizar</button>
+          </div>
+          <pre class="json-preview" id="json-preview"></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOGS SECTION -->
+    <section id="catalogs-section" class="content-section">
+      <div class="form-card">
+        <h2 class="form-title">Gestión de Catálogos</h2>
+        <p class="form-desc">Crea y administra los catálogos de tu tienda. Los productos se asignan a una categoría en
+          el formulario de producto.</p>
+
+        <!-- Add new catalog -->
+        <div
+          style="background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;margin-bottom:24px;">
+          <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:16px;color:var(--text);">Nuevo Catálogo</h3>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end;">
+            <div class="form-group" style="margin-bottom:0;">
+              <label for="catalog-name-input">Nombre</label>
+              <input type="text" id="catalog-name-input" placeholder="Ej: Ropa de Verano, Accesorios..." maxlength="40">
+            </div>
+            <button type="button" class="btn-action" id="catalog-add-btn" style="height:42px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              Agregar
+            </button>
+          </div>
+        </div>
+
+        <!-- Catalogs table -->
+        <div id="catalogs-empty" class="admin-empty hidden">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+          </svg>
+          <p>No hay catálogos aún</p>
+          <span>Agrega tu primer catálogo arriba</span>
+        </div>
+        <div class="products-table-wrapper" id="catalogs-table-wrapper" style="display:none;">
+          <table class="products-table">
+            <thead>
+              <tr>
+                <th style="width:40px;">#</th>
+                <th>Nombre</th>
+                <th>Productos asignados</th>
+                <th style="width:120px;">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="catalogs-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORDERS SECTION -->
+    <section id="orders-section" class="admin-section">
+      <div class="section-topbar">
+        <div>
+          <h2>Órdenes</h2>
+          <span class="section-subtitle" id="orders-count-label">0 pedidos</span>
+        </div>
+        <div class="orders-filter-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+          <select id="orders-status-filter" class="admin-select">
+            <option value="all">Todos los estados</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="pagado">Pagado</option>
+            <option value="confirmado">Confirmado</option>
+            <option value="cancelado">Cancelado</option>
+          </select>
+          <button id="export-orders-inline-btn" class="btn-secondary-admin" title="Descargar orders.json">⬇ Exportar</button>
+          <button id="clear-orders-btn" class="btn-danger" style="padding:10px 16px;font-size:0.82rem;" title="Eliminar todos los pedidos">🗑 Limpiar todo</button>
+        </div>
+      </div>
+
+      <div class="table-wrapper" id="orders-table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Orden</th>
+              <th>Fecha</th>
+              <th>Cliente</th>
+              <th>Items</th>
+              <th>Total</th>
+              <th>Método</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="orders-tbody"></tbody>
+        </table>
+      </div>
+      <div id="orders-empty" class="empty-state hidden">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <p>No hay órdenes aún</p>
+        <span>Las órdenes aparecerán aquí cuando los clientes realicen compras</span>
+      </div>
+
+      <!-- Order Detail Modal -->
+      <div id="order-detail-modal" class="admin-modal hidden">
+        <div class="admin-modal-content admin-modal-content--wide">
+          <button class="admin-modal-close" id="order-detail-close">&times;</button>
+          <h3>Detalle de Orden</h3>
+          <div id="order-detail-body"></div>
+          <div class="admin-modal-actions" id="order-detail-actions"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAYMENT METHODS SECTION -->
+    <section id="payments-section" class="admin-section">
+      <div class="section-topbar">
+        <div>
+          <h2>Métodos de Pago</h2>
+          <span class="section-subtitle">Activa los métodos disponibles y agrega las instrucciones para cada uno</span>
+        </div>
+        <button class="btn-primary-admin" id="save-payments-btn">Guardar Cambios</button>
+      </div>
+      <div id="payments-groups"></div>
+    </section>
+
+    <!-- INVOICE SETTINGS SECTION -->
+    <section id="invoice-settings-section" class="admin-section">
+      <div class="section-topbar">
+        <div>
+          <h2>Configuración de Nota de Transacción</h2>
+          <span class="section-subtitle">Personaliza la información que aparece en las notas de transacción generadas</span>
+        </div>
+        <button class="btn-primary-admin" id="save-invoice-settings-btn">Guardar Cambios</button>
+      </div>
+      <div class="inv-settings-grid">
+        <div class="form-card">
+          <h3 class="form-card-title">Datos de la Empresa</h3>
+          <div class="form-group">
+            <label>Nombre en Factura</label>
+            <input type="text" id="inv-store-name" class="form-control" placeholder="Nombre de tu tienda">
+          </div>
+          <div class="form-group">
+            <label>Dirección</label>
+            <input type="text" id="inv-address" class="form-control" placeholder="Calle, Ciudad, País">
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="text" id="inv-phone" class="form-control" placeholder="+58 412 000 0000">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="inv-email" class="form-control" placeholder="contacto@mitienda.com">
+          </div>
+        </div>
+        <div class="form-card">
+          <h3 class="form-card-title">Impuestos y Totales</h3>
+          <div class="form-group">
+            <label>Tasa de Impuesto (%)</label>
+            <input type="number" id="inv-tax-rate" class="form-control" placeholder="0" min="0" max="100" step="0.01">
+            <span class="form-hint">Deja en 0 para sin impuestos</span>
+          </div>
+          <div class="form-group">
+            <label>Nota al pie de la factura</label>
+            <textarea id="inv-footer-text" class="form-control" rows="3" placeholder="Gracias por tu compra. ¡Vuelve pronto!"></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- DELETE CONFIRM MODAL -->
+  <div id="delete-modal" class="admin-modal hidden">
+    <div class="admin-modal-content">
+      <h3>¿Eliminar producto?</h3>
+      <p id="delete-product-name"></p>
+      <div class="admin-modal-actions">
+        <button class="btn-danger" id="confirm-delete">Eliminar</button>
+        <button class="btn-secondary-admin" id="cancel-delete">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="admin-toast" class="admin-toast hidden">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+      <polyline points="22 4 12 14.01 9 11.01" />
+    </svg>
+    <span id="admin-toast-msg"></span>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+
+</html>

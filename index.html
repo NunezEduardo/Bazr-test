@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BAZR - Ecommerce">
+  <meta name="keywords" content="Ecommerce, Tienda, Plataforma, Productos, BAZR">
+  <title>BAZR - Ecommerce</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700;800&family=Josefin+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- LOADER -->
+  <div id="loader" class="loader">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <img src="images/bazr-logos/Bazr_logo.svg" alt="BAZR" class="logo-img logo-img--loader">
+      </div>
+      <div class="loader-bar">
+        <div class="loader-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CURRENCY BAR -->
+  <div class="currency-bar" id="currency-bar">
+    <div class="currency-bar-inner">
+      <span class="currency-bar-label">Cambio en vivo:</span>
+      <div class="currency-rates" id="currency-rates">
+        <div class="currency-rate-item">
+          <span class="curr-flag">🇺🇸</span>
+          <span class="curr-name">USD</span>
+          <span class="curr-val">$1.00</span>
+        </div>
+        <div class="currency-sep">|</div>
+        <div class="currency-rate-item">
+          <span class="curr-flag">🇪🇺</span>
+          <span class="curr-name">EUR</span>
+          <span class="curr-val" id="eur-val">Cargando...</span>
+        </div>
+        <div class="currency-sep">|</div>
+        <div class="currency-rate-item">
+          <span class="curr-flag">🇻🇪</span>
+          <span class="curr-name">Bs. (VES)</span>
+          <span class="curr-val" id="ves-val">Cargando...</span>
+        </div>
+      </div>
+      <span class="currency-bar-updated" id="currency-updated"></span>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" id="nav-logo">
+        <img src="images/bazr-logos/Bazr_logo.svg" alt="BAZR" class="logo-img logo-img--nav">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active">Inicio</a></li>
+        <li><a href="#collections" class="nav-link">Colecciones</a></li>
+        <li><a href="#catalog" class="nav-link" id="nav-catalog-label">Catálogo</a></li>
+        <li><a href="#about" class="nav-link">Nosotros</a></li>
+        <li><a href="#contact" class="nav-link">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="cart-btn" class="cart-btn" aria-label="Carrito de compras">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 01-8 0" />
+          </svg>
+          <span id="cart-count" class="cart-count">0</span>
+        </button>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <ul>
+        <li><a href="#hero" class="mobile-link">Inicio</a></li>
+        <li><a href="#collections" class="mobile-link">Colecciones</a></li>
+        <li><a href="#catalog" class="mobile-link" id="mobile-catalog-label">Catálogo</a></li>
+        <li><a href="#about" class="mobile-link">Nosotros</a></li>
+        <li><a href="#contact" class="mobile-link">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-particles" id="hero-particles"></div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-tag" id="hero-tag">Tu Tienda Online</span>
+      <h1 class="hero-title">
+        <span class="hero-title-line" id="hero-title-line1">Tu Negocio</span>
+        <span class="hero-title-line accent" id="hero-title-line2">Tus Reglas</span>
+      </h1>
+      <p class="hero-subtitle" id="hero-subtitle">Plataforma de Ecommerce Directo, sin comisiones, sin limitantes ni
+        competencia. Tu negocio en otro nivel</p>
+      <div class="hero-cta">
+        <a href="#catalog" class="btn btn-primary" id="hero-cta-primary">Explorar Catálogo</a>
+        <a href="#collections" class="btn btn-outline" id="hero-cta-secondary">Ver Colecciones</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number" data-target="500" id="stat-1-number">0</span><span class="stat-plus" id="stat-1-plus">+</span>
+          <span class="stat-label" id="stat-1-label">Productos</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-target="50" id="stat-2-number">0</span><span class="stat-plus" id="stat-2-plus">+</span>
+          <span class="stat-label" id="stat-2-label">Colecciones</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-target="10" id="stat-3-number">0</span><span class="stat-plus" id="stat-3-plus">K</span>
+          <span class="stat-label" id="stat-3-label">Clientes</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- COLLECTIONS -->
+  <section id="collections" class="section collections">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" id="collections-tag">Explora</span>
+        <h2 class="section-title" id="collections-title">Nuestras Colecciones</h2>
+        <p class="section-desc" id="collections-desc">Cada colección cuenta con una variedad increíble de productos. Encuentra la que resuene con tu estilo.</p>
+      </div>
+      <div id="collections-grid" class="collections-grid">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CATALOG -->
+  <section id="catalog" class="section catalog">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" id="catalog-tag">Tienda</span>
+        <h2 class="section-title" id="catalog-title">Catálogo Completo</h2>
+      </div>
+      <!-- FILTERS -->
+      <div class="catalog-filters">
+        <div class="search-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <path d="M21 21l-4.35-4.35" />
+          </svg>
+          <input type="text" id="search-input" placeholder="Buscar prendas..." aria-label="Buscar prendas">
+        </div>
+        <div class="filter-chips" id="filter-chips">
+          <button class="chip active" data-filter="all">Todos</button>
+          <!-- More chips generated by JS -->
+        </div>
+        <div class="sort-box">
+          <label for="sort-select">Ordenar:</label>
+          <select id="sort-select">
+            <option value="default">Destacados</option>
+            <option value="price-asc">Precio: Menor a Mayor</option>
+            <option value="price-desc">Precio: Mayor a Menor</option>
+            <option value="name-asc">A — Z</option>
+            <option value="name-desc">Z — A</option>
+          </select>
+        </div>
+      </div>
+      <!-- PRODUCT GRID -->
+      <div id="product-grid" class="product-grid">
+        <!-- Generated by JS -->
+      </div>
+      <div id="no-results" class="no-results hidden">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8" />
+          <path d="M21 21l-4.35-4.35" />
+          <line x1="8" y1="8" x2="14" y2="14" />
+          <line x1="14" y1="8" x2="8" y2="14" />
+        </svg>
+        <p>No se encontraron productos</p>
+        <span>Intenta con otra búsqueda o filtro</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <span class="section-tag" id="about-tag">Sobre Nosotros</span>
+          <h2 class="section-title" id="about-title">Tu comercio. Tus reglas.</h2>
+          <p id="about-p1">En <strong id="about-brand">BAZR</strong> creemos que tu negocio es tuyo. Cada producto está diseñado para empoderar a quien lo vende, con herramientas de calidad y procesos simples.</p>
+          <p id="about-p2">Nuestra misión es ofrecer tiendas versátiles y atemporales que se adapten a tu modelo único y automatizen tu exito.</p>
+          <div class="about-features">
+            <div class="about-feature">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <div>
+                <h4 id="about-feat1-title">Calidad Premium</h4>
+                <p id="about-feat1-desc">Tiendas de calidad y procesos simples.</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div>
+                <h4 id="about-feat2-title">Alcance Global</h4>
+                <p id="about-feat2-desc">Llevamos tu tienda a cualquier parte del mundo.</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+                  <line x1="4" y1="22" x2="4" y2="15" />
+                </svg>
+              </div>
+              <div>
+                <h4 id="about-feat3-title">Automatización</h4>
+                <p id="about-feat3-desc">Automatiza tu tienda y vende más.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="about-card">
+            <div class="about-card-inner">
+              <span class="about-card-tag">EST. 2026</span>
+              <div class="about-card-logo">
+                <img src="images/bazr-logos/Bazr_iconlogo.svg" alt="BAZR" class="logo-img logo-img--card">
+              </div>
+              <p class="about-card-text" id="about-card-text">Tu tienda en línea</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" id="contact-tag">Contáctanos</span>
+        <h2 class="section-title" id="contact-title">Estamos aquí para ti</h2>
+        <p class="section-desc" id="contact-desc">Comunícate con nosotros por el canal que prefieras. Respondemos rápido.</p>
+      </div>
+      <div class="contact-grid">
+        <a href="https://wa.me/1234567890" id="contact-whatsapp-link" class="contact-card reveal" target="_blank" rel="noopener noreferrer">
+          <div class="contact-card-icon contact-card-icon--wa">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+          </div>
+          <div class="contact-card-content">
+            <h3 class="contact-card-title" id="contact-whatsapp-title">WhatsApp</h3>
+            <p class="contact-card-info" id="contact-whatsapp-info">+1 (234) 567-890</p>
+            <span class="contact-card-cta">Escribir mensaje →</span>
+          </div>
+        </a>
+        <a href="https://instagram.com/bazr" id="contact-instagram-link" class="contact-card reveal" target="_blank" rel="noopener noreferrer">
+          <div class="contact-card-icon contact-card-icon--ig">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+            </svg>
+          </div>
+          <div class="contact-card-content">
+            <h3 class="contact-card-title" id="contact-instagram-title">Instagram</h3>
+            <p class="contact-card-info" id="contact-instagram-info">@bazr.tienda</p>
+            <span class="contact-card-cta">Ver perfil →</span>
+          </div>
+        </a>
+        <a href="mailto:info@bazr.tienda" id="contact-email-link" class="contact-card reveal" target="_blank" rel="noopener noreferrer">
+          <div class="contact-card-icon contact-card-icon--email">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+          </div>
+          <div class="contact-card-content">
+            <h3 class="contact-card-title" id="contact-email-title">Email</h3>
+            <p class="contact-card-info" id="contact-email-info">info@bazr.tienda</p>
+            <span class="contact-card-cta">Enviar correo →</span>
+          </div>
+        </a>
+        <a href="https://tiktok.com/@bazr" id="contact-tiktok-link" class="contact-card reveal" target="_blank" rel="noopener noreferrer">
+          <div class="contact-card-icon contact-card-icon--tt">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z" />
+            </svg>
+          </div>
+          <div class="contact-card-content">
+            <h3 class="contact-card-title" id="contact-tiktok-title">TikTok</h3>
+            <p class="contact-card-info" id="contact-tiktok-info">@bazr.tienda</p>
+            <span class="contact-card-cta">Seguir →</span>
+          </div>
+        </a>
+        <a href="https://facebook.com/bazr" id="contact-facebook-link" class="contact-card reveal" target="_blank" rel="noopener noreferrer">
+          <div class="contact-card-icon contact-card-icon--fb">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+          </div>
+          <div class="contact-card-content">
+            <h3 class="contact-card-title" id="contact-facebook-title">Facebook</h3>
+            <p class="contact-card-info" id="contact-facebook-info">Bazr Tienda</p>
+            <span class="contact-card-cta">Visitar página →</span>
+          </div>
+        </a>
+        <div class="contact-card contact-card--info reveal">
+          <div class="contact-card-icon contact-card-icon--loc">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </div>
+          <div class="contact-card-content">
+            <h3 class="contact-card-title" id="contact-hours-title">Atención</h3>
+            <p class="contact-card-info" id="contact-hours-info">Lun – Vie: 9am – 6pm</p>
+            <span class="contact-card-cta" id="contact-hours-sub">Respondemos en menos de 24h</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="footer-logo">
+            <img src="images/bazr-logos/Bazr_logo.svg" alt="BAZR" class="logo-img logo-img--footer">
+          </span>
+          <p>Tu comercio. Tus reglas.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navegación</h4>
+          <a href="#hero">Inicio</a>
+          <a href="#collections">Colecciones</a>
+          <a href="#catalog">Catálogo</a>
+          <a href="#about">Nosotros</a>
+          <a href="#contact">Contacto</a>
+        </div>
+        <div class="footer-links">
+          <h4>Legal</h4>
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Devoluciones</a>
+        </div>
+        <div class="footer-links">
+          <h4>Síguenos</h4>
+          <a href="#" id="footer-instagram">Instagram</a>
+          <a href="#" id="footer-whatsapp">WhatsApp</a>
+          <a href="#" id="footer-tiktok">TikTok</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Bazr. Todos los derechos reservados.</span>
+        <a href="admin.html" class="admin-link">Panel Admin</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PRODUCT POPUP / MODAL -->
+  <div id="product-modal" class="modal-overlay hidden">
+    <div class="modal">
+      <button id="modal-close" class="modal-close" aria-label="Cerrar">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <div class="modal-body">
+        <div class="modal-image" id="modal-image">
+          <div class="modal-img-placeholder" id="modal-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="2" y="2" width="20" height="20" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <span id="modal-img-label">Imagen del producto</span>
+          </div>
+        </div>
+        <div class="modal-info">
+          <span class="modal-collection" id="modal-collection"></span>
+          <h2 class="modal-title" id="modal-title"></h2>
+          <p class="modal-price" id="modal-price"></p>
+          <p class="modal-desc" id="modal-desc"></p>
+          <div class="modal-material" id="modal-material"></div>
+
+          <!-- Colors -->
+          <div class="modal-section">
+            <h4>Color</h4>
+            <div class="color-options" id="modal-colors"></div>
+          </div>
+
+          <!-- Sizes -->
+          <div class="modal-section">
+            <h4>Talla</h4>
+            <div class="size-options" id="modal-sizes"></div>
+          </div>
+
+          <!-- Models -->
+          <div class="modal-section">
+            <h4>Modelo</h4>
+            <div class="model-options" id="modal-models"></div>
+          </div>
+
+          <!-- Quantity -->
+          <div class="modal-section">
+            <h4>Cantidad</h4>
+            <div class="qty-control">
+              <button class="qty-btn" id="modal-qty-minus">−</button>
+              <span class="qty-value" id="modal-qty">1</span>
+              <button class="qty-btn" id="modal-qty-plus">+</button>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button id="add-to-cart-btn" class="btn btn-outline btn-full">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 01-8 0" />
+              </svg>
+              Agregar al Carrito
+            </button>
+            <button id="buy-now-btn" class="btn btn-primary btn-full">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+              Comprar Ahora
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART PANEL OVERLAY -->
+  <div id="cart-overlay" class="cart-overlay hidden"></div>
+
+  <!-- CART PANEL -->
+  <div id="cart-panel" class="cart-panel">
+    <div class="cart-header">
+      <h3>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        Carrito de Compras
+      </h3>
+      <button id="cart-close" class="cart-close-btn" aria-label="Cerrar carrito">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="cart-items" id="cart-items"></div>
+
+    <div class="cart-empty" id="cart-empty">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      <p>Tu carrito está vacío</p>
+      <span>Agrega productos para empezar</span>
+    </div>
+
+    <div class="cart-footer" id="cart-footer">
+      <div class="cart-summary-row">
+        <span>Seleccionados (<span id="cart-selected-count">0</span>)</span>
+        <span class="cart-subtotal" id="cart-subtotal">$0.00</span>
+      </div>
+      <div class="cart-btn-group">
+        <button id="buy-selected-btn" class="btn btn-outline btn-full cart-action-btn" disabled>
+          Comprar Seleccionados
+        </button>
+        <button id="buy-all-btn" class="btn btn-primary btn-full cart-action-btn" disabled>
+          Comprar Todo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkout-overlay" class="modal-overlay hidden">
+    <div class="modal modal--checkout">
+      <button id="checkout-close" class="modal-close" aria-label="Cerrar">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <!-- Step 1: Order Summary + Payment Method Selection -->
+      <div id="checkout-step1" class="checkout-step active">
+        <h2 class="checkout-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+            <line x1="1" y1="10" x2="23" y2="10"/>
+          </svg>
+          Resumen del Pedido
+        </h2>
+        <div class="checkout-order-list" id="checkout-order-list"></div>
+        <div class="checkout-total-line">
+          <span>Total</span>
+          <span id="checkout-total">$0.00</span>
+        </div>
+
+        <h3 class="checkout-section-title">Selecciona el Método de Pago</h3>
+        <div id="payment-methods-grid" class="payment-methods-grid"></div>
+
+        <button class="btn btn-primary btn-full" id="checkout-to-step2" style="margin-top:20px" disabled>
+          Continuar →
+        </button>
+      </div>
+
+      <!-- Step 2: Payment Instructions + Buyer Form -->
+      <div id="checkout-step2" class="checkout-step">
+        <button class="checkout-back-btn" id="checkout-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"/>
+            <polyline points="12 19 5 12 12 5"/>
+          </svg>
+          Volver
+        </button>
+        <h2 class="checkout-title">Instrucciones de Pago</h2>
+        <div class="payment-info-card" id="payment-info-card">
+          <!-- Filled by JS -->
+        </div>
+
+        <h3 class="checkout-section-title">Tus Datos de Contacto</h3>
+        <form id="checkout-form" autocomplete="on">
+          <div class="checkout-form-row">
+            <div class="cft-group">
+              <label for="buyer-name">Nombre Completo *</label>
+              <input type="text" id="buyer-name" required placeholder="Juan Pérez">
+            </div>
+            <div class="cft-group">
+              <label for="buyer-email">Correo Electrónico *</label>
+              <input type="email" id="buyer-email" required placeholder="juan@email.com">
+            </div>
+          </div>
+          <div class="checkout-form-row">
+            <div class="cft-group">
+              <label for="buyer-phone">Teléfono *</label>
+              <input type="tel" id="buyer-phone" required placeholder="+58 412 000 0000">
+            </div>
+            <div class="cft-group">
+              <label for="buyer-ref">Referencia de Pago *</label>
+              <input type="text" id="buyer-ref" required placeholder="Número de confirmación">
+            </div>
+          </div>
+          <div class="cft-group">
+            <label for="buyer-address">Dirección de Entrega *</label>
+            <textarea id="buyer-address" rows="2" required placeholder="Calle, Urb., Ciudad, Estado, País..."></textarea>
+          </div>
+          <div class="cft-group">
+            <label for="buyer-notes">Notas adicionales (opcional)</label>
+            <textarea id="buyer-notes" rows="2" placeholder="Instrucciones especiales, punto de referencia..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="checkout-submit-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Confirmar Pedido
+          </button>
+        </form>
+      </div>
+
+      <!-- Step 3: Success + Invoice -->
+      <div id="checkout-step3" class="checkout-step">
+        <div class="checkout-success">
+          <div class="success-check">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+          <h2>¡Pedido Registrado!</h2>
+          <p id="success-order-id" class="success-order-num"></p>
+          <p class="success-desc">Tu pedido ha sido registrado y está <strong>pendiente de confirmación</strong>. Te notificaremos cuando sea aprobado.</p>
+          <div class="success-action-btns">
+            <button class="btn btn-primary" id="open-invoice-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 6 2 18 2 18 9"/>
+                <path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+                <rect x="6" y="14" width="12" height="8"/>
+              </svg>
+              Ver Invoice
+            </button>
+            <button class="btn btn-outline" id="checkout-done-btn">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVOICE MODAL -->
+  <div id="invoice-overlay" class="modal-overlay hidden">
+    <div class="modal modal--invoice">
+      <button id="invoice-close" class="modal-close" aria-label="Cerrar">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="invoice-actions-bar">
+        <button class="btn btn-primary btn-sm" id="print-btn" onclick="window.print()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"/>
+            <path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+            <rect x="6" y="14" width="12" height="8"/>
+          </svg>
+          Imprimir
+        </button>
+      </div>
+      <div id="invoice-body" class="invoice-body">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast hidden">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+      <polyline points="22 4 12 14.01 9 11.01" />
+    </svg>
+    <span id="toast-msg"></span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
