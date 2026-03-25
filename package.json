@@ -1,0 +1,15 @@
+{
+  "name": "mvp-saas",
+  "version": "1.0.0",
+  "description": "MVP — Ultra-light B2B2C SaaS virtual store platform",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js 3000"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": ["saas", "ecommerce", "pwa", "nodejs"],
+  "license": "MIT"
+}
