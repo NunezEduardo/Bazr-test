@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cat-001",
+    "name": "Camisas",
+    "slug": "camisas",
+    "description": "Camisas casuales y formales para toda ocasión"
+  },
+  {
+    "id": "cat-002",
+    "name": "Pantalones",
+    "slug": "pantalones",
+    "description": "Pantalones para todos los estilos y ocasiones"
+  },
+  {
+    "id": "cat-003",
+    "name": "Accesorios",
+    "slug": "accesorios",
+    "description": "Accesorios que complementan tu look"
+  },
+  {
+    "id": "cat-004",
+    "name": "Calzado",
+    "slug": "calzado",
+    "description": "Zapatos y tenis con estilo"
+  }
+]

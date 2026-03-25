@@ -1,0 +1,30 @@
+[
+  {
+    "id": "pay-001",
+    "name": "Transferencia Bancaria",
+    "icon": "🏦",
+    "instructions": "Realiza tu transferencia a la cuenta:\n\nBanco: Banco Nacional\nCuenta: 001-123456-7\nNombre: BAZR Store\n\nEnvía el comprobante por WhatsApp después de completar el pedido.",
+    "active": true
+  },
+  {
+    "id": "pay-002",
+    "name": "Pago Móvil",
+    "icon": "📱",
+    "instructions": "Realiza tu pago móvil a:\n\nTeléfono: 0414-1234567\nCédula: V-12345678\nBanco: Banco Nacional\n\nColoca tu número de pedido en el concepto y envía el comprobante.",
+    "active": true
+  },
+  {
+    "id": "pay-003",
+    "name": "USDT / Cripto",
+    "icon": "💰",
+    "instructions": "Pago en USDT (TRC-20):\n\nDirección: TRx...ejemplo123\n\nEnvía exactamente el monto indicado y comparte el hash de la transacción.",
+    "active": true
+  },
+  {
+    "id": "pay-004",
+    "name": "Zelle / PayPal",
+    "icon": "💳",
+    "instructions": "Pago por Zelle o PayPal:\n\nZelle: pagos@bazr.store\nPayPal: @bazrstore\n\nIndica tu número de pedido en el comentario al enviar.",
+    "active": true
+  }
+]
