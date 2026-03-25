@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <title data-txt="storeName">Tienda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- LOADER -->
+  <div id="loader" class="loader">
+    <div class="loader-content">
+      <div class="loader-logo" id="loader-logo-text">Tienda</div>
+      <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo"><span id="nav-logo-text" data-txt="storeName">Tienda</span></a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active">Inicio</a></li>
+        <li><a href="#collections" class="nav-link">Colecciones</a></li>
+        <li><a href="#catalog" class="nav-link">Catálogo</a></li>
+        <li><a href="#about" class="nav-link">Nosotros</a></li>
+        <li><a href="#contact" class="nav-link">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="cart-btn" class="cart-btn" aria-label="Carrito">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span id="cart-count" class="cart-count">0</span>
+        </button>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="mobile-menu">
+      <ul>
+        <li><a href="#hero" class="mobile-link">Inicio</a></li>
+        <li><a href="#collections" class="mobile-link">Colecciones</a></li>
+        <li><a href="#catalog" class="mobile-link">Catálogo</a></li>
+        <li><a href="#about" class="mobile-link">Nosotros</a></li>
+        <li><a href="#contact" class="mobile-link">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-particles" id="hero-particles"></div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-tag" data-txt="txt-hero-tag">Nueva colección</span>
+      <h1 class="hero-title">
+        <span class="hero-title-line" data-txt="txt-hero-title1">Estilo que</span>
+        <span class="hero-title-line accent" data-txt="txt-hero-title2">te define</span>
+      </h1>
+      <p class="hero-subtitle" data-txt="txt-hero-subtitle">Descubre nuestra selección de productos premium.</p>
+      <div class="hero-cta">
+        <a href="#catalog" class="btn btn-primary" data-txt="txt-hero-cta1">Ver catálogo</a>
+        <a href="#collections" class="btn btn-outline" data-txt="txt-hero-cta2">Conoce más</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number" data-target="500" id="stat-1">0</span><span class="stat-plus">+</span>
+          <span class="stat-label" data-txt="txt-stat1-label">Clientes felices</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-target="120" id="stat-2">0</span><span class="stat-plus">+</span>
+          <span class="stat-label" data-txt="txt-stat2-label">Productos</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-target="98" id="stat-3">0</span><span class="stat-plus">%</span>
+          <span class="stat-label" data-txt="txt-stat3-label">Entregas</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll"><div class="scroll-line"></div></div>
+  </section>
+
+  <!-- COLLECTIONS -->
+  <section id="collections" class="section collections">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-txt="txt-col-tag">Colecciones</span>
+        <h2 class="section-title" data-txt="txt-col-title">Explora nuestros estilos</h2>
+        <p class="section-desc" data-txt="txt-col-desc">Cada colección está diseñada para resaltar tu personalidad.</p>
+      </div>
+      <div id="collections-grid" class="collections-grid"></div>
+    </div>
+  </section>
+
+  <!-- CATALOG -->
+  <section id="catalog" class="section catalog">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-txt="txt-cat-tag">Catálogo</span>
+        <h2 class="section-title" data-txt="txt-cat-title">Nuestros productos</h2>
+      </div>
+      <div class="catalog-filters">
+        <div class="search-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <input type="text" id="search-input" placeholder="Buscar productos..." aria-label="Buscar">
+        </div>
+        <div class="filter-chips" id="filter-chips">
+          <button class="chip active" data-filter="all">Todos</button>
+        </div>
+        <div class="sort-box">
+          <label for="sort-select">Ordenar:</label>
+          <select id="sort-select" class="form-control">
+            <option value="default">Destacados</option>
+            <option value="price-asc">Precio ↑</option>
+            <option value="price-desc">Precio ↓</option>
+            <option value="name-asc">A — Z</option>
+            <option value="name-desc">Z — A</option>
+          </select>
+        </div>
+      </div>
+      <div id="product-grid" class="product-grid"></div>
+      <div id="no-results" class="no-results hidden">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          <line x1="8" y1="8" x2="14" y2="14"/><line x1="14" y1="8" x2="8" y2="14"/>
+        </svg>
+        <p>No se encontraron productos</p>
+        <span>Intenta con otra búsqueda o filtro</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <span class="section-tag" data-txt="txt-about-tag">Sobre Nosotros</span>
+          <h2 class="section-title" data-txt="txt-about-title">Moda con propósito</h2>
+          <p data-txt="txt-about-p1">Somos una tienda comprometida con ofrecerte calidad.</p>
+          <p data-txt="txt-about-p2">Cada pieza seleccionada para tu satisfacción.</p>
+          <div class="about-features">
+            <div class="about-feature">
+              <div class="feature-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <div><h4 data-txt="txt-feat1-title">Calidad</h4><p data-txt="txt-feat1-desc">Materiales de primera.</p></div>
+            </div>
+            <div class="about-feature">
+              <div class="feature-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div><h4 data-txt="txt-feat2-title">Envío rápido</h4><p data-txt="txt-feat2-desc">Tiempo récord.</p></div>
+            </div>
+            <div class="about-feature">
+              <div class="feature-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>
+                </svg>
+              </div>
+              <div><h4 data-txt="txt-feat3-title">Atención</h4><p data-txt="txt-feat3-desc">Te acompañamos.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="about-card">
+            <div class="about-card-inner">
+              <span class="about-card-tag">EST. 2026</span>
+              <div class="about-card-logo" id="about-card-logo" data-txt="storeName">BAZR</div>
+              <p class="about-card-text" data-txt="txt-about-card">Tu estilo, nuestra pasión</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-txt="txt-contact-tag">Contáctanos</span>
+        <h2 class="section-title" data-txt="txt-contact-title">Estamos para ti</h2>
+        <p class="section-desc" data-txt="txt-contact-desc">Escríbenos por cualquiera de nuestros canales.</p>
+      </div>
+      <div class="contact-grid">
+        <a href="#" id="contact-wa-link" class="contact-card" target="_blank" rel="noopener">
+          <div class="contact-card-icon contact-card-icon--wa">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div class="contact-card-content">
+            <h3 class="contact-card-title" data-txt="txt-wa-title">WhatsApp</h3>
+            <p class="contact-card-info" data-txt="txt-wa-info"></p>
+            <span class="contact-card-cta">Escribir →</span>
+          </div>
+        </a>
+        <a href="#" id="contact-ig-link" class="contact-card" target="_blank" rel="noopener">
+          <div class="contact-card-icon contact-card-icon--ig">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </div>
+          <div class="contact-card-content">
+            <h3 class="contact-card-title" data-txt="txt-ig-title">Instagram</h3>
+            <p class="contact-card-info" data-txt="txt-ig-info"></p>
+            <span class="contact-card-cta">Ver perfil →</span>
+          </div>
+        </a>
+        <a href="#" id="contact-email-link" class="contact-card" target="_blank" rel="noopener">
+          <div class="contact-card-icon contact-card-icon--email">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="contact-card-content">
+            <h3 class="contact-card-title" data-txt="txt-email-title">Email</h3>
+            <p class="contact-card-info" data-txt="txt-email-info"></p>
+            <span class="contact-card-cta">Enviar →</span>
+          </div>
+        </a>
+        <div class="contact-card contact-card--info">
+          <div class="contact-card-icon contact-card-icon--hours">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="contact-card-content">
+            <h3 class="contact-card-title" data-txt="txt-hours-title">Horario</h3>
+            <p class="contact-card-info" data-txt="txt-hours-info">Lunes a Sábado</p>
+            <span class="contact-card-cta" data-txt="txt-hours-sub">9:00 AM – 6:00 PM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="footer-logo" data-txt="storeName">BAZR</span>
+          <p data-txt="txt-about-card">Tu estilo, nuestra pasión</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navegación</h4>
+          <a href="#hero">Inicio</a><a href="#collections">Colecciones</a>
+          <a href="#catalog">Catálogo</a><a href="#about">Nosotros</a><a href="#contact">Contacto</a>
+        </div>
+        <div class="footer-links">
+          <h4>Legal</h4>
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Devoluciones</a>
+        </div>
+        <div class="footer-links">
+          <h4>Síguenos</h4>
+          <a href="#" id="footer-ig">Instagram</a>
+          <a href="#" id="footer-wa">WhatsApp</a>
+          <a href="#" id="footer-tt">TikTok</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span id="footer-copy">© 2026 Tienda.</span>
+        <a href="../admin/" class="admin-link">Panel Admin</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PRODUCT MODAL -->
+  <div id="product-modal" class="modal-overlay">
+    <div class="modal">
+      <button id="modal-close" class="modal-close" aria-label="Cerrar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="modal-body">
+        <div class="modal-image" id="modal-image">
+          <div class="modal-img-placeholder" id="modal-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="2" y="2" width="20" height="20" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <span>Imagen del producto</span>
+          </div>
+        </div>
+        <div class="modal-info">
+          <span class="modal-collection" id="modal-collection"></span>
+          <h2 class="modal-title" id="modal-title"></h2>
+          <p class="modal-price" id="modal-price"></p>
+          <p class="modal-desc" id="modal-desc"></p>
+          <div class="modal-section" id="modal-colors-wrap">
+            <h4>Color</h4>
+            <div class="color-options" id="modal-colors"></div>
+          </div>
+          <div class="modal-section" id="modal-sizes-wrap">
+            <h4>Talla</h4>
+            <div class="size-options" id="modal-sizes"></div>
+          </div>
+          <div class="modal-section">
+            <h4>Cantidad</h4>
+            <div class="qty-control">
+              <button class="qty-btn" id="modal-qty-minus">−</button>
+              <span class="qty-value" id="modal-qty">1</span>
+              <button class="qty-btn" id="modal-qty-plus">+</button>
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button id="add-to-cart-btn" class="btn btn-outline btn-full">
+              Agregar al Carrito
+            </button>
+            <button id="buy-now-btn" class="btn btn-primary btn-full">
+              Comprar Ahora
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART PANEL -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+  <div id="cart-panel" class="cart-panel">
+    <div class="cart-header">
+      <h3>Carrito de Compras</h3>
+      <button id="cart-close" class="cart-close-btn" aria-label="Cerrar carrito">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-empty" id="cart-empty">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      <p>Tu carrito está vacío</p>
+      <span>Agrega productos para empezar</span>
+    </div>
+    <div class="cart-footer" id="cart-footer">
+      <div class="cart-summary-row">
+        <span>Seleccionados (<span id="cart-selected-count">0</span>)</span>
+        <span class="cart-subtotal" id="cart-subtotal">$0.00</span>
+      </div>
+      <div class="cart-btn-group">
+        <button id="buy-selected-btn" class="btn btn-outline btn-full" disabled>Comprar Seleccionados</button>
+        <button id="buy-all-btn" class="btn btn-primary btn-full" disabled>Comprar Todo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkout-overlay" class="modal-overlay">
+    <div class="modal modal--checkout">
+      <button id="checkout-close" class="modal-close" aria-label="Cerrar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <!-- Step 1 -->
+      <div id="checkout-step1" class="checkout-step active">
+        <h2 class="checkout-title">Resumen del Pedido</h2>
+        <div class="checkout-order-list" id="checkout-order-list"></div>
+        <div class="checkout-total-line">
+          <span>Total</span><span id="checkout-total">$0.00</span>
+        </div>
+        <h3 class="checkout-section-title">Selecciona el Método de Pago</h3>
+        <div id="payment-methods-grid" class="payment-methods-grid"></div>
+        <button class="btn btn-primary btn-full" id="checkout-to-step2" style="margin-top:20px" disabled>Continuar →</button>
+      </div>
+      <!-- Step 2 -->
+      <div id="checkout-step2" class="checkout-step">
+        <button class="checkout-back-btn" id="checkout-back">← Volver</button>
+        <h2 class="checkout-title">Instrucciones de Pago</h2>
+        <div class="payment-info-card" id="payment-info-card"></div>
+        <h3 class="checkout-section-title">Tus Datos</h3>
+        <form id="checkout-form" autocomplete="on">
+          <div class="checkout-form-row">
+            <div class="cft-group">
+              <label for="buyer-name">Nombre *</label>
+              <input type="text" id="buyer-name" class="form-control" required placeholder="Juan Pérez">
+            </div>
+            <div class="cft-group">
+              <label for="buyer-email">Email *</label>
+              <input type="email" id="buyer-email" class="form-control" required placeholder="juan@email.com">
+            </div>
+          </div>
+          <div class="checkout-form-row">
+            <div class="cft-group">
+              <label for="buyer-phone">Teléfono *</label>
+              <input type="tel" id="buyer-phone" class="form-control" required placeholder="+58 412 000 0000">
+            </div>
+            <div class="cft-group">
+              <label for="buyer-ref">Referencia de Pago *</label>
+              <input type="text" id="buyer-ref" class="form-control" required placeholder="Número de confirmación">
+            </div>
+          </div>
+          <div class="cft-group">
+            <label for="buyer-address">Dirección *</label>
+            <textarea id="buyer-address" class="form-control" rows="2" required placeholder="Calle, Ciudad, Estado..."></textarea>
+          </div>
+          <div class="cft-group">
+            <label for="buyer-notes">Notas adicionales (opcional)</label>
+            <textarea id="buyer-notes" class="form-control" rows="2" placeholder="Instrucciones especiales..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="checkout-submit-btn">
+            Confirmar Pedido
+          </button>
+        </form>
+      </div>
+      <!-- Step 3 -->
+      <div id="checkout-step3" class="checkout-step">
+        <div class="checkout-success">
+          <div class="success-check">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+          <h2>¡Pedido Registrado!</h2>
+          <p id="success-order-id" class="success-order-num"></p>
+          <p class="success-desc">Tu pedido está <strong>pendiente de confirmación</strong>.</p>
+          <div class="success-action-btns">
+            <button class="btn btn-primary" id="open-invoice-btn">Ver Nota de Transacción</button>
+            <button class="btn btn-outline" id="checkout-done-btn">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVOICE MODAL -->
+  <div id="invoice-overlay" class="modal-overlay">
+    <div class="modal modal--invoice">
+      <button id="invoice-close" class="modal-close" aria-label="Cerrar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="invoice-actions-bar">
+        <button class="btn btn-primary btn-sm" onclick="window.print()">Imprimir</button>
+      </div>
+      <div id="invoice-body" class="invoice-body"></div>
+    </div>
+  </div>
+
+  <script src="../shared/api.js"></script>
+  <script src="../shared/utils.js"></script>
+  <script src="js/settings-loader.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/store.js"></script>
+</body>
+</html>
