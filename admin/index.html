@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panel de administración — MVP SaaS">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="apple-touch-icon" href="../shared/icons/icon-192.png">
+  <title>Admin Panel</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ── LOGIN SCREEN ───────────────────────────────────────── -->
+  <div id="login-screen">
+    <div class="login-card">
+      <div class="login-logo">MVP</div>
+      <div class="login-subtitle">Admin Panel</div>
+      <div class="login-badge">🔐 Acceso Seguro</div>
+      <form id="login-form" class="login-form" autocomplete="off">
+        <div class="login-group">
+          <label for="login-store">ID de la Tienda</label>
+          <input type="text" id="login-store" class="form-control" placeholder="bazr" value="bazr" autocomplete="off">
+        </div>
+        <div class="login-group">
+          <label for="login-pass">Contraseña</label>
+          <input type="password" id="login-pass" class="form-control" placeholder="••••••••" required>
+        </div>
+        <div id="login-error"></div>
+        <button type="submit" id="login-btn" class="btn btn-primary">Ingresar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── ADMIN APP ──────────────────────────────────────────── -->
+  <div class="admin-app">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo" id="sidebar-logo">BAZR</div>
+        <div class="sidebar-store" id="sidebar-store-id">administrador</div>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="sidebar-link active" data-cmd="estado">
+          <span class="link-icon">📊</span> Dashboard
+        </button>
+        <button class="sidebar-link" data-cmd="listar">
+          <span class="link-icon">📦</span> Productos
+        </button>
+        <button class="sidebar-link" data-cmd="listar-categorias">
+          <span class="link-icon">🗂️</span> Colecciones
+        </button>
+        <button class="sidebar-link" data-cmd="ver-pedidos">
+          <span class="link-icon">📬</span> Pedidos
+        </button>
+        <button class="sidebar-link" data-cmd="listar-pagos">
+          <span class="link-icon">💳</span> Pagos
+        </button>
+        <button class="sidebar-link" data-cmd="ver-config">
+          <span class="link-icon">⚙️</span> Configuración
+        </button>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="sidebar-link" id="logout-btn">
+          <span class="link-icon">👋</span> Cerrar sesión
+        </button>
+      </div>
+    </aside>
+
+    <!-- CHAT SCREEN -->
+    <div id="chat-screen" class="hidden">
+
+      <!-- Header -->
+      <div class="chat-header">
+        <div class="chat-header-title">
+          <h1>⚡ Asistente MVP</h1>
+          <span class="chat-header-store" id="chat-store-badge">bazr</span>
+        </div>
+        <div class="chat-header-actions">
+          <button class="chat-icon-btn" id="help-btn" title="Ayuda y comandos">?</button>
+          <a class="chat-icon-btn" id="store-link" href="../store/" target="_blank" title="Ir a la tienda">🏪</a>
+        </div>
+      </div>
+
+      <!-- Log -->
+      <div id="chat-log"></div>
+
+      <!-- Input -->
+      <div class="chat-input-bar">
+        <div class="chat-input-wrap">
+          <textarea
+            id="chat-input"
+            rows="1"
+            placeholder="Escribe un comando... (ej: estado, listar, agregar nombre=&quot;...&quot;)"
+            aria-label="Comando"
+          ></textarea>
+          <button id="chat-send-btn" aria-label="Enviar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="chat-hint">Escribe <code>ayuda</code> para ver todos los comandos disponibles · <kbd>Enter</kbd> para enviar</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HELP MODAL ─────────────────────────────────────────── -->
+  <div id="help-overlay">
+    <div class="help-modal">
+      <div class="help-header">
+        <h2>📚 Comandos disponibles</h2>
+        <button id="help-close" class="help-close-btn" aria-label="Cerrar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div id="help-body"></div>
+    </div>
+  </div>
+
+  <!-- Scripts (load order matters) -->
+  <script src="../shared/api.js"></script>
+  <script src="../shared/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/image-webp.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/help.js"></script>
+  <script src="js/commands.js"></script>
+
+  <script>
+    'use strict';
+
+    // ── Register PWA Service Worker ───────────────────────────
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/admin/sw.js').catch(() => {});
+    }
+
+    // ── Boot ──────────────────────────────────────────────────
+    (async () => {
+      // Login / session check
+      const { token, storeId, api } = await AdminAuth.init();
+
+      // Wire sidebar store label
+      const sidebarStore = document.getElementById('sidebar-store-id');
+      const chatBadge    = document.getElementById('chat-store-badge');
+      const storeLink    = document.getElementById('store-link');
+      if (sidebarStore) sidebarStore.textContent = storeId;
+      if (chatBadge)    chatBadge.textContent     = storeId;
+      if (storeLink)    storeLink.href            = `../store/?store=${storeId}`;
+
+      // Load store name for sidebar logo
+      try {
+        const cfg = await api.getConfig();
+        const logo = document.getElementById('sidebar-logo');
+        if (logo && cfg?.storeName) logo.textContent = cfg.storeName;
+      } catch {}
+
+      // Init modules
+      AdminCommands.init(api, storeId, token);
+      AdminHelp.init();
+
+      AdminHelp.bindInsert(cmd => {
+        const input = document.getElementById('chat-input');
+        if (input) { input.value = cmd; input.focus(); }
+      });
+
+      AdminChat.init(text => AdminCommands.dispatch(text));
+
+      // Logout btn
+      document.getElementById('logout-btn')?.addEventListener('click', () => AdminAuth.logout());
+
+      // Sidebar quick-commands
+      document.querySelectorAll('.sidebar-link[data-cmd]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.sidebar-link').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          AdminChat.appendMsg('user', btn.dataset.cmd);
+          AdminCommands.dispatch(btn.dataset.cmd);
+        });
+      });
+
+      // Welcome message
+      AdminChat.appendMsg('bot',
+        `Bienvenido al panel admin de <strong>${storeId}</strong>.<br>` +
+        `Escribe <code>estado</code> para ver un resumen, o haz clic en cualquier sección del menú.`
+      );
+
+      // Auto-run dashboard
+      await AdminCommands.dispatch('estado');
+    })();
+  </script>
+</body>
+</html>
